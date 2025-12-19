@@ -13,7 +13,7 @@ export class Transport {
   private playheadPosition: number = 0; // in beats
   private startTime: number = 0;
   private audioContext: AudioContext;
-  private listeners: Map<string, Set<Function>> = new Map();
+  private listeners: Map<string, Set<(...args: any[]) => void>> = new Map();
   private loopEnabled: boolean = false;
   private loopStart: number = 0;
   private loopEnd: number = 8; // 8 beats default
@@ -175,7 +175,7 @@ export class Transport {
   /**
    * Add event listener
    */
-  on(event: string, callback: Function): void {
+  on(event: string, callback: (...args: any[]) => void): void {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, new Set());
     }
@@ -185,7 +185,7 @@ export class Transport {
   /**
    * Remove event listener
    */
-  off(event: string, callback: Function): void {
+  off(event: string, callback: (...args: any[]) => void): void {
     const callbacks = this.listeners.get(event);
     if (callbacks) {
       callbacks.delete(callback);

@@ -21,7 +21,7 @@ export abstract class Track {
   }
 
   private generateId(): string {
-    return `track_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `track_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
   }
 
   protected initialize(): void {

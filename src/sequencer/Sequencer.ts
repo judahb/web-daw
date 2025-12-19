@@ -112,6 +112,8 @@ export class Sequencer {
 
   /**
    * Schedule a single clip
+   * NOTE: This uses setTimeout for simplicity. In production, use Web Audio API's
+   * sample-accurate scheduling with audioContext.currentTime for better timing precision.
    */
   private scheduleClip(clip: Clip): void {
     const track = this.tracks.get(clip.trackId);
@@ -128,6 +130,7 @@ export class Sequencer {
       notes.forEach(note => {
         if (note.startTime >= clip.offset && note.startTime < clip.offset + duration) {
           const scheduleTime = startTime + note.startTime - clip.offset;
+          // TODO: Use Web Audio API scheduling for sample-accurate timing
           setTimeout(() => {
             track.playNote(note.note, note.velocity, note.duration);
           }, scheduleTime * 1000);
@@ -135,6 +138,7 @@ export class Sequencer {
       });
     } else if (track instanceof AudioTrack) {
       // Schedule audio playback
+      // TODO: Use Web Audio API scheduling for sample-accurate timing
       setTimeout(() => {
         track.play(clip.offset);
       }, startTime * 1000);

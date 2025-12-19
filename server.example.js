@@ -27,6 +27,7 @@ app.use((req, res, next) => {
 app.use(express.static('public'));
 
 // Get list of available plugins
+// NOTE: In production, add rate limiting middleware (e.g., express-rate-limit)
 app.get('/api/plugins/list', (req, res) => {
   const pluginListPath = path.join(__dirname, 'public', 'plugins', 'list.json');
   
@@ -40,6 +41,7 @@ app.get('/api/plugins/list', (req, res) => {
 });
 
 // Serve individual plugin files
+// NOTE: In production, add rate limiting middleware (e.g., express-rate-limit)
 app.get('/api/plugins/:filename', (req, res) => {
   const filename = req.params.filename;
   const pluginPath = path.join(__dirname, 'public', 'plugins', filename);

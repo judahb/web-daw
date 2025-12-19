@@ -35,8 +35,8 @@ async function initializeApp() {
         ui.startMeterUpdates();
 
         // Add some demo tracks
-        const audioTrack = daw.createAudioTrack('Audio 1');
-        const midiTrack = daw.createMidiTrack('MIDI 1');
+        daw.createAudioTrack('Audio 1');
+        daw.createMidiTrack('MIDI 1');
 
         // Make DAW available globally for debugging
         (window as any).daw = daw;

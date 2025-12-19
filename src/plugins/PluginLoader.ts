@@ -63,10 +63,12 @@ export class PluginLoader {
 
   /**
    * Instantiate a plugin from code
+   * NOTE: This uses new Function() which has security implications.
+   * In production, use Web Workers or a secure sandbox environment.
    */
   private async instantiatePlugin(code: string, metadata: PluginMetadata): Promise<any> {
-    // In a real implementation, this would use a secure sandbox
-    // For now, we'll create a basic plugin wrapper
+    // WARNING: This is a simplified implementation for demonstration
+    // In production, use Web Workers or a secure sandbox
     
     try {
       // Create a module from the code

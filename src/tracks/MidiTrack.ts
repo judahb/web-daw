@@ -116,11 +116,13 @@ export class MidiTrack extends Track {
 
   /**
    * Schedule all notes for playback
+   * NOTE: Uses setTimeout for simplicity. In production, use Web Audio API
+   * scheduling with audioContext.currentTime for sample-accurate timing.
    */
   scheduleNotes(startTime: number): void {
     this.notes.forEach(note => {
       const scheduleTime = startTime + note.startTime;
-      // Schedule note playback
+      // TODO: Use Web Audio API scheduling for better timing precision
       setTimeout(() => {
         this.playNote(note.note, note.velocity, note.duration);
       }, (scheduleTime - this.audioContext.currentTime) * 1000);

@@ -22,30 +22,17 @@ export interface DAWConfig {
  */
 export class DAW {
   private audioEngine: AudioEngine;
-  private transport: Transport;
-  private sequencer: Sequencer;
-  private mixer: Mixer;
-  private pluginLoader: PluginLoader;
+  private transport!: Transport;
+  private sequencer!: Sequencer;
+  private mixer!: Mixer;
+  private pluginLoader!: PluginLoader;
   private audioGridder: AudioGridderClient | null = null;
   private initialized: boolean = false;
+  private config: DAWConfig;
 
   constructor(config: DAWConfig = {}) {
     this.audioEngine = new AudioEngine();
-    this.transport = new Transport(this.audioEngine.getContext());
-    this.sequencer = new Sequencer(this.transport);
-    this.mixer = new Mixer(this.audioEngine);
-    this.pluginLoader = new PluginLoader(
-      this.audioEngine.getContext(),
-      config.pluginServerUrl
-    );
-
-    // Initialize AudioGridder if config provided
-    if (config.audioGridderConfig) {
-      this.audioGridder = new AudioGridderClient(
-        this.audioEngine.getContext(),
-        config.audioGridderConfig
-      );
-    }
+    this.config = config;
   }
 
   /**
@@ -59,8 +46,21 @@ export class DAW {
 
     await this.audioEngine.initialize();
     
-    // Connect to AudioGridder if configured
-    if (this.audioGridder) {
+    // Now we can initialize components that need the audio context
+    this.transport = new Transport(this.audioEngine.getContext());
+    this.sequencer = new Sequencer(this.transport);
+    this.mixer = new Mixer(this.audioEngine);
+    this.pluginLoader = new PluginLoader(
+      this.audioEngine.getContext(),
+      this.config.pluginServerUrl
+    );
+
+    // Initialize AudioGridder if config provided
+    if (this.config.audioGridderConfig) {
+      this.audioGridder = new AudioGridderClient(
+        this.audioEngine.getContext(),
+        this.config.audioGridderConfig
+      );
       try {
         await this.audioGridder.connect();
         console.log('AudioGridder connected');

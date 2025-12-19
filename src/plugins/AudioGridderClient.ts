@@ -13,11 +13,9 @@ export interface AudioGridderConfig {
 export class AudioGridderClient {
   private config: AudioGridderConfig;
   private connected: boolean = false;
-  private audioContext: AudioContext;
   private websocket: WebSocket | null = null;
 
-  constructor(audioContext: AudioContext, config: AudioGridderConfig) {
-    this.audioContext = audioContext;
+  constructor(_audioContext: AudioContext, config: AudioGridderConfig) {
     this.config = config;
   }
 

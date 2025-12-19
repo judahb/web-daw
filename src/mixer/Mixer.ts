@@ -120,7 +120,7 @@ export class Mixer {
   }
 
   /**
-   * Get master level
+   * Get master level (note: creates temporary analyser, consider using persistent analyser in production)
    */
   getMasterLevel(): number {
     const masterBus = this.audioEngine.getMasterBus();
