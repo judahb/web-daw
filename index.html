@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web DAW - Cloud-Hosted Digital Audio Workstation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+    
+    #init-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
+    
+    #init-screen h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #4a9eff;
+    }
+    
+    #init-screen p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #888;
+    }
+    
+    #init-app {
+      background: #4a9eff;
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    
+    #init-app:hover {
+      background: #3a8eef;
+    }
+    
+    #app {
+      display: none;
+    }
+
+    .features {
+      max-width: 600px;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .features h2 {
+      color: #4a9eff;
+      margin-bottom: 1rem;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4a9eff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="init-screen">
+    <h1>🎵 Web DAW</h1>
+    <p>Cloud-Hosted Digital Audio Workstation with VST Support</p>
+    <button id="init-app">Launch DAW</button>
+    
+    <div class="features">
+      <h2>Features</h2>
+      <ul>
+        <li>Audio and MIDI tracks with user-selectable count</li>
+        <li>Fixed stereo master bus</li>
+        <li>Volume and panning controls per track</li>
+        <li>Transport controls (Play/Pause/Stop)</li>
+        <li>Integrated sequencer and mixer</li>
+        <li>VST instrument support for MIDI tracks</li>
+        <li>VST effects support for audio tracks</li>
+        <li>Remote plugin loading with browser cache</li>
+        <li>AudioGridder client integration</li>
+        <li>Low-latency audio processing</li>
+        <li>Open-source VST support</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="app"></div>
+  
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

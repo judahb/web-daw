@@ -1,0 +1,18 @@
+[
+  {
+    "id": "simple-synth",
+    "name": "Simple Synth",
+    "type": "instrument",
+    "url": "example-synth.js",
+    "version": "1.0.0",
+    "manufacturer": "Web DAW"
+  },
+  {
+    "id": "simple-reverb",
+    "name": "Simple Reverb",
+    "type": "effect",
+    "url": "example-reverb.js",
+    "version": "1.0.0",
+    "manufacturer": "Web DAW"
+  }
+]
