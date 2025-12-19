@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.daw-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.daw-header {
+  background: #252525;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.daw-header h1 {
+  font-size: 1.5rem;
+  color: #4a9eff;
+}
+
+.transport-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn {
+  background: #333;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #3a3a3a;
+}
+
+.btn-primary {
+  background: #4a9eff;
+  border-color: #4a9eff;
+  color: white;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: #3a8eef;
+}
+
+.position {
+  font-family: monospace;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+}
+
+.tempo-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tempo-control input {
+  width: 60px;
+  background: #333;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.daw-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px;
+  background: #252525;
+  border-right: 1px solid #333;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  margin-bottom: 1rem;
+  color: #4a9eff;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mixer {
+  background: #1e1e1e;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+  overflow-x: auto;
+}
+
+.mixer h3 {
+  margin-bottom: 1rem;
+  color: #4a9eff;
+}
+
+.tracks-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.track-channel, .master-channel {
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 1rem;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.track-channel h4, .master-channel h4 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.track-type {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.track-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.track-controls label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.volume-slider {
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+  height: 150px;
+  margin: 0.5rem auto;
+}
+
+.pan-slider {
+  width: 100%;
+}
+
+.mute-btn, .solo-btn {
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.mute-btn {
+  background: #ff5555;
+}
+
+.solo-btn {
+  background: #ffaa00;
+}
+
+.mute-btn.active, .solo-btn.active {
+  box-shadow: 0 0 10px currentColor;
+}
+
+.remove-btn {
+  background: #ff5555;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+}
+
+.meter {
+  width: 100%;
+  height: 100px;
+  background: #333;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.meter::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: linear-gradient(to top, #00ff00, #ffff00, #ff0000);
+  transition: height 0.1s;
+}
+
+.sequencer {
+  flex: 1;
+  background: #1a1a1a;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.sequencer h3 {
+  margin-bottom: 1rem;
+  color: #4a9eff;
+}
+
+.timeline {
+  height: 300px;
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 4px;
+  position: relative;
+}
+
+.plugin-list {
+  margin-top: 2rem;
+}
+
+.plugin-list h4 {
+  margin-bottom: 0.5rem;
+  color: #4a9eff;
+}
+
+.plugin-item {
+  background: #333;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plugin-type {
+  font-size: 0.7rem;
+  background: #4a9eff;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* Input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #333;
+  outline: none;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #4a9eff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #4a9eff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
